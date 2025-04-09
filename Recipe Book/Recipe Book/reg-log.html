@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login & Register</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f9d423, #ff4e50);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 900px;
+      height: 550px;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .slider {
+      width: 200%;
+      height: 100%;
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      width: 50%;
+      height: 100%;
+      display: flex;
+    }
+
+    .image-side, .form-side {
+      width: 50%;
+      height: 100%;
+    }
+
+    .image-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .form-side {
+      background-color: #fff;
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .form-side h2 {
+      font-size: 2.4rem;
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    .form-side input {
+      width: 100%;
+      padding: 14px 18px;
+      margin: 12px 0;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      outline: none;
+      transition: 0.3s ease;
+    }
+
+    .form-side input:focus {
+      border-color: #ff4e50;
+      box-shadow: 0 0 5px rgba(255, 78, 80, 0.4);
+    }
+
+    .form-side button {
+      margin-top: 18px;
+      padding: 14px 32px;
+      border: none;
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      color: white;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .form-side button:hover {
+      background: linear-gradient(to right, #ff4b2b, #ff416c);
+    }
+
+    .toggle-btn {
+      background: none;
+      border: none;
+      margin-top: 15px;
+      color: #666;
+      font-size: 0.9rem;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="slider" id="slider">
+    <!-- Login Slide -->
+    <div class="slide">
+      <div class="image-side">
+        <img src="log.jpg" alt="Login Image" />
+      </div>
+      <form class="form-side" method="POST" action="auth.php">
+        <h2>Login</h2>
+        <input type="hidden" name="action" value="login">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+        <button type="button" class="toggle-btn" onclick="toggleForm()">Don't have an account? Register</button>
+      </form>
+    </div>
+
+    <!-- Register Slide -->
+    <div class="slide">
+      <form class="form-side" method="POST" action="auth.php">
+        <h2>Register</h2>
+        <input type="hidden" name="action" value="register">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Register</button>
+        <button type="button" class="toggle-btn" onclick="toggleForm()">Already have an account? Login</button>
+      </form>
+      <div class="image-side">
+        <img src="reg.jpg" alt="Register Image" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentSlide = 0;
+  const slider = document.getElementById('slider');
+
+  function toggleForm() {
+    currentSlide = (currentSlide + 1) % 2;
+    slider.style.transform = `translateX(-${currentSlide * 50}%)`;
+  }
+
+  window.onload = function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const formType = urlParams.get('form');
+    if (formType === 'register') {
+      currentSlide = 1;
+      slider.style.transform = `translateX(-50%)`;
+    } else {
+      currentSlide = 0;
+      slider.style.transform = `translateX(0)`;
+    }
+  };
+</script>
+
+</body>
+</html>

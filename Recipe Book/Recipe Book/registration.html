@@ -1,56 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration form</title>
-    <style type="text/css">
-        body{box-sizing: border-box;}
-        input[type=text],[type=email],[type=password],[type=number]{
-            width:100%;
-            border:1px solid #ccc;
-            padding: 12px;
-            margin-top: 6px;
-            margin-bottom: 6px;
-            margin-right: 16px;
-        }
-        button[id="Submit"]{
-            background-color: rgb(176, 234, 176);
-            border-color: aliceblue;
-        }
-        button[id="cancel"]{
-            background-color: rgb(234, 171, 171);
-            border-color: aliceblue;
-        }
-        .container{
-            background-color: #f8c8b4;
-            padding:14px;
-            border-radius: 5px;
-        }
-        p{
-            border-radius: 100px;
-        }
-        button:hover{
-            background-color: hotpink;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | Recipe Book</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(90deg, #b0e0e6, #b0c4de);
+    }
+
+    .container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      text-align: center;
+    }
+
+    .container h1 {
+      margin-bottom: 25px;
+      font-size: 30px;
+      color: #333;
+    }
+
+    .input-box {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 12px;
+      padding-left: 40px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    .input-box i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+    }
+
+    .forgot-link {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    .forgot-link a {
+      text-decoration: none;
+      font-size: 14px;
+      color: #007bff;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background-color: #28a745;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #218838;
+    }
+  </style>
 </head>
 <body>
-    <p><b>Register Yourself!</b></p>
-    <form class="container">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name"><br>
-        <label for="username">Email:</label><br>
-        <input type="email" id="username" name="username"><br>
-        <td><label for="password">Password:</label><br>
-        <td><input type="password" id="password" name="password"><br><br>
-        <button id="Submit" type="button" onClick="goToMain()">Register</button>
-        <button id="cancel">Cancel</button>
+
+  <div class="container">
+    <h1>Login</h1>
+    <form action="/login" method="POST" class="form-box login">
+      <div class="input-box">
+        <input type="text" name="username" placeholder="Username" required>
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" name="password" placeholder="Password" required>
+        <i class='bx bxs-lock'></i>
+      </div>
+      <div class="forgot-link">
+        <a href="#">Forgot Password?</a>
+      </div>
+      <button type="submit" class="btn">Login</button>
     </form>
-    <script>
-        function goToMain(){
-            window.location.href="main.html";
-        }
-    </script>
+  </div>
+
 </body>
 </html>
