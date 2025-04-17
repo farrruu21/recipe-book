@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Upload Recipe</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #f9a87f;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #f5855f;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Upload Your Recipe</h2>
+  <form id="recipeForm" action="/submit-recipe" method="POST">
+    
+    <label for="name">Dish Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" rows="3" required></textarea>
+
+    <label for="ingredients">Ingredients (one per line):</label>
+    <textarea id="ingredients" name="ingredients" rows="5" required></textarea>
+
+    <label for="steps">Steps (one per line):</label>
+    <textarea id="steps" name="steps" rows="5" required></textarea>
+
+    <label for="uploaded_by">Your Email:</label>
+    <input type="email" id="uploaded_by" name="uploaded_by" required>
+
+    <label for="category">Category:</label>
+    <select id="category" name="category" required>
+      <option value="">Select Category</option>
+      <option value="veg">Veg</option>
+      <option value="nonveg">Non-Veg</option>
+      <option value="dessert">Dessert</option>
+      <option value="chinese">Chinese</option>
+      <option value="italian">Italian</option>
+      <option value="beverage">Beverage</option>
+    </select>
+
+    <button type="submit">Submit Recipe</button>
+  </form>
+
+</body>
+</html>
